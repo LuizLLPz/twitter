@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import { response } from "express";
 import { Post as PostModel } from "@prisma/client";
 
@@ -27,6 +27,16 @@ export class PostController {
         } catch (error) {
             throw new Error(error);
         }
+    }
+
+    @Put('post/:id')
+    editPost(@Param('id') id: number, @Body() post: PostModel): { message: string } {
+      try {
+          this.postService.editPost(id, post);
+          return { message: 'Post edited successfully' };
+      }  catch (error) {
+          throw new Error(error);
+      }
     }
 
     @Delete('post/:id')
