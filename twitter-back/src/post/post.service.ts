@@ -1,26 +1,28 @@
-import { Injectable } from '@nestjs/common';
-import { Post } from "@prisma/client";
+import {Injectable} from '@nestjs/common';
+import {Post} from "@prisma/client";
 
-import { PrismaService } from "../prisma.service";
+import {PrismaService} from "../prisma.service";
 
 
 @Injectable()
 export class PostService {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) {
+    }
+
     getPosts(): Promise<Post[]> {
         return this.prisma.post.findMany();
     }
 
-    getUserPosts(authorId: number): Promise<Post[]> {
+    getUserPosts(authorId: string): Promise<Post[]> {
         return this.prisma.post.findMany({
             where: {
-                authorId
+                authorId: Number.parseInt(authorId)
             }
         })
     }
 
-    savePost(data: Post): void {
-        this.prisma.post.create({
+    async savePost(data: Post) {
+        await this.prisma.post.create({
             data
         })
     }

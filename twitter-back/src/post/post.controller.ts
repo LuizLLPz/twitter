@@ -1,35 +1,34 @@
 import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
-import { response } from "express";
 import { Post as PostModel } from "@prisma/client";
 
 import { PostService } from './post.service';
+import { PostDTO } from "./PostDTO";
 
-
-@Controller()
+@Controller('post')
 export class PostController {
     constructor(private readonly postService: PostService) {}
 
-    @Get('post')
+    @Get()
     getPosts(): Promise<PostModel[]> {
         return this.postService.getPosts();
     }
 
-    @Get('post?userId=:id')
-    getUserPosts(@Param('authorId') authorId?: number): Promise<PostModel[]> {
+    @Get(':authorId')
+    getUserPosts(@Param('authorId')  authorId?: string): Promise<PostModel[]> {
         return this.postService.getUserPosts(authorId);
     }
 
-    @Post('post')
-    savePost(@Body() post: PostModel): { message: string } {
+    @Post()
+    savePost(@Body() post: PostDTO): { message: string } {
         try {
-            this.postService.savePost(post);
+            this.postService.savePost(post as unknown as PostModel);
             return { message: 'Post created successfully' };
         } catch (error) {
             throw new Error(error);
         }
     }
 
-    @Put('post/:id')
+    @Put(':id')
     editPost(@Param('id') id: number, @Body() post: PostModel): { message: string } {
       try {
           this.postService.editPost(id, post);
@@ -39,7 +38,7 @@ export class PostController {
       }
     }
 
-    @Delete('post/:id')
+    @Delete(':id')
     deletePost(@Param('id') id: number): { message: string } {
         try {
             this.postService.deletePost(id);
