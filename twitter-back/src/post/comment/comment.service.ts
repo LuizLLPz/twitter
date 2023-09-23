@@ -10,12 +10,12 @@ export class CommentService {
     constructor(private prisma: PrismaService) {
     }
 
-    savePostComment(data: Comment): void{
-        this.prisma.like.create({data})
+    async savePostComment(data: Comment){
+        await this.prisma.like.create({data})
     }
 
-    deletePostComment(data: CommentDTO): void {
-        this.prisma.like.deleteMany({
+    async deletePostComment(data: CommentDTO) {
+        await this.prisma.like.deleteMany({
             where: {
                 postId: data.postId as number,
                 userId: data.userId as number

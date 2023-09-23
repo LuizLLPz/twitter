@@ -20,14 +20,14 @@ export class PostService {
             }
         })
     }
-    savePost(data: Post) {
-         this.prisma.post.create({
+    async savePost(data: Post) {
+        await this.prisma.post.create({
             data
         })
     }
 
-    editPost(id: number, data: Post): void {
-        this.prisma.post.update({
+    async editPost(id: number, data: Post) {
+        await this.prisma.post.update({
             where: {
                 id
             },
@@ -35,8 +35,8 @@ export class PostService {
         })
     }
 
-    deletePost(id: number): void {
-        this.prisma.post.delete({
+    async deletePost(id: number) {
+        await this.prisma.post.delete({
             where: {
                 id
             }

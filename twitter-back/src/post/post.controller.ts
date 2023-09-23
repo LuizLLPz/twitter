@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put} from '@nestjs/common';
 import { Post as PostModel } from "@prisma/client";
 
 import { PostDTO } from "./post.dto";
@@ -39,7 +39,7 @@ export class PostController {
     }
 
     @Delete(':id')
-    deletePost(@Param('id') id: number): { message: string } {
+    deletePost(@Param('id', ParseIntPipe) id: number): { message: string } {
         try {
             this.postService.deletePost(id);
             return { message: 'Post deleted successfully' };

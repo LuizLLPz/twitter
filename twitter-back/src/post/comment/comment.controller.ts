@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
+import {Body, Controller, Delete, Param, ParseIntPipe, Post} from '@nestjs/common';
 import { Comment as CommentModel } from "@prisma/client";
 
 import { CommentDTO } from "./comment.dto";
@@ -18,7 +18,7 @@ export class CommentController {
     }
 
     @Delete(':id')
-    deletePostLike(@Param('userId') userId: number, @Param('postId') postId: number): { message: string } {
+    deletePostLike(@Param('userId', ParseIntPipe) userId: number, @Param('postId', ParseIntPipe) postId: number): { message: string } {
         try {
             this.commentService.deletePostComment({userId, postId});
             return { message: 'Like removed successfully!' };

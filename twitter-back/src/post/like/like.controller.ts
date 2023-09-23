@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post} from '@nestjs/common';
 import { Like as LikeModel } from "@prisma/client";
 
 import { LikeDTO } from "./like.dto";
@@ -7,6 +7,12 @@ import { LikeService } from './like.service';
 @Controller('post/like')
 export class LikeController {
     constructor(private readonly likeService: LikeService) {}
+
+    @Get(':postId')
+    getPostLikes(@Param('postId', ParseIntPipe) postId: number) {
+        return this.likeService.getPostLikes(postId);
+    }
+
     @Post()
     savePostLike(@Body() like: LikeDTO): { message: string } {
         try {
@@ -18,7 +24,7 @@ export class LikeController {
     }
 
     @Delete(':id')
-    deletePostLike(@Param('userId') userId: number, @Param('postId') postId: number): { message: string } {
+    deletePostLike(@Param('userId', ParseIntPipe) userId: number, @Param('postId', ParseIntPipe) postId: number): { message: string } {
         try {
             this.likeService.deletePostLike({userId, postId});
             return { message: 'Like removed successfully!' };
