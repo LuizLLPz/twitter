@@ -10,7 +10,6 @@ html, body {
 
 .container-content{
     display: flex;
-    background-image: url("../assets/background_images/background_bird_01.svg");
     background-repeat: no-repeat;
     background-position: 555px;
 }
@@ -48,4 +47,20 @@ html, body {
 
 .text-initial-page{
     font-size: 20px;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    height: 220px;
+    justify-content: space-around;
+
+}
+
+.btn{
+    width: 300px;
+    height: 56px;
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
 }
