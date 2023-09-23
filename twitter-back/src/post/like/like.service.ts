@@ -14,8 +14,6 @@ export class LikeService {
         return this.prisma.like.findMany({
             where: { postId } ,
             select: {
-                id: true,
-                post: true,
                 postId: true,
                 userId: true,
                 User: {
