@@ -1,7 +1,7 @@
-import {Injectable} from '@nestjs/common';
-import {Post} from "@prisma/client";
+import { Injectable } from '@nestjs/common';
+import { Post } from "@prisma/client";
 
-import {PrismaService} from "../prisma.service";
+import { PrismaService } from "../prisma.service";
 
 
 @Injectable()
@@ -20,9 +20,8 @@ export class PostService {
             }
         })
     }
-
-    async savePost(data: Post) {
-        await this.prisma.post.create({
+    savePost(data: Post) {
+         this.prisma.post.create({
             data
         })
     }
@@ -43,5 +42,4 @@ export class PostService {
             }
         })
     }
-
 }

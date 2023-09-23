@@ -1,8 +1,8 @@
-import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Post as PostModel } from "@prisma/client";
 
+import { PostDTO } from "./post.dto";
 import { PostService } from './post.service';
-import { PostDTO } from "./PostDTO";
 
 @Controller('post')
 export class PostController {
