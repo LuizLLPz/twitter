@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query} from '@nestjs/common';
 import { Like as LikeModel } from "@prisma/client";
 
 import { LikeDTO } from "./like.dto";
@@ -23,8 +23,8 @@ export class LikeController {
         }
     }
 
-    @Delete(':id')
-    deletePostLike(@Param('userId', ParseIntPipe) userId: number, @Param('postId', ParseIntPipe) postId: number): { message: string } {
+    @Delete()
+    deletePostLike(@Query('userId', ParseIntPipe) userId: number, @Query('postId', ParseIntPipe) postId: number): { message: string } {
         try {
             this.likeService.deletePostLike({userId, postId});
             return { message: 'Like removed successfully!' };
