@@ -16,13 +16,13 @@ export class PerfilController {
     return this.postService.getUsuarioLogin(email, password);
   }
 
-  @Get('perfil/:number/:username')
+  @Get('profile/:number/:username')
   getUsuarioById(@Param() params: any): Promise<Idata> {
     const { number, username } = params;
     return this.postService.getUsuario(number, username);
   }
 
-  @Post('perfil')
+  @Post('profile')
   async createUsuario(
     @Body() usuario: IUsuarioCadastro,
   ): Promise<Idata | null> {
