@@ -10,15 +10,35 @@ export class CommentService {
     constructor(private prisma: PrismaService) {
     }
 
+    getPostComments(postId: number) {
+        return this.prisma.comment.findMany({
+            where: {
+                postId
+            },
+            select: {
+                id: true,
+                text: true,
+                authorId: true,
+                author: {
+                    select: {
+                        id: true,
+                        username: true,
+                        name: true
+                    }
+                }
+            }
+        })
+    }
+
     async savePostComment(data: Comment){
-        await this.prisma.like.create({data})
+        await this.prisma.comment.create({data})
     }
 
     async deletePostComment(data: CommentDTO) {
         await this.prisma.like.deleteMany({
             where: {
                 postId: data.postId as number,
-                userId: data.userId as number
+                userId: data.authorId as number
             }
         })
     }
