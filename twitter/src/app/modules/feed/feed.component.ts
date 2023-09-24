@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FeedService} from "./feed.service";
+import { FeedService } from "./feed.service";
 import { Post } from "./feed.model";
 
 @Component({

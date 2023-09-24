@@ -1,7 +1,12 @@
-<div class="container-content">
-        <div class="button-container">
-
-        </div>
-    <div class="background">
+<div class="feed_container">
+    <div class="left_sidebar">
     </div>
+    <div class="feed_content">
+      <div class="post_container">
+        <div class="" *ngFor="let post of posts">
+          <app-post-card [post]="post"></app-post-card>
+        </div>
+      </div>
+    </div>
+
 </div>

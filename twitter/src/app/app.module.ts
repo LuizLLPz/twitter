@@ -10,6 +10,7 @@ import { RegisterComponent } from './modules/register/register.component';
 import { MainComponent } from './modules/main/main.component';
 import {FeedComponent} from "./modules/feed/feed.component";
 import { PostCardComponent } from './modules/feed/post-card/post-card.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PostCardComponent } from './modules/feed/post-card/post-card.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgOptimizedImage
   ],
   providers: [
     ApiService,

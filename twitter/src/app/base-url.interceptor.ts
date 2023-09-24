@@ -10,7 +10,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const baseUrl = this.configService.getBaseUrl();
-    const apiReq = request.clone({ url: `${baseUrl}/${request.url}` });
+    const apiReq = request.clone({ url: `${baseUrl}/${request.url}`, setParams: {insecure: 'true'} });
     return next.handle(apiReq);
   }
 }
