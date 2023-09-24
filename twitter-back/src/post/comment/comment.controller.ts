@@ -4,14 +4,14 @@ import { Comment as CommentModel } from "@prisma/client";
 import { CommentDTO } from "./comment.dto";
 import { CommentService } from './comment.service';
 
-@Controller('post/like')
+@Controller('post/comment')
 export class CommentController {
     constructor(private readonly commentService: CommentService) {}
     @Post()
     savePostComment(@Body() comment: CommentDTO): { message: string } {
         try {
             this.commentService.savePostComment(comment as unknown as CommentModel);
-            return { message: 'Like submitted successfully!' };
+            return { message: 'Comment submitted successfully!' };
         } catch (error) {
             throw new Error(error);
         }
@@ -21,7 +21,7 @@ export class CommentController {
     deletePostComment(@Query('userId', ParseIntPipe) userId: number, @Param('postId', ParseIntPipe) postId: number): { message: string } {
         try {
             this.commentService.deletePostComment({userId, postId});
-            return { message: 'Like removed successfully!' };
+            return { message: 'Comment removed successfully!' };
         } catch (error) {
             throw new Error(error);
         }
