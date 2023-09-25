@@ -2,7 +2,6 @@ export interface RegisterForm{
   name: string,
   user: string,
   email: string,
-  cellphone: number,
+  cellphone: string,
   password: string,
-  confirm_password: string,
 }

@@ -1,14 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterServiceService {
+  URL = "http://localhost:3000/";
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-
-  postRegister(form: any){
-    console.log(form)
+  postRegister(form: any): Observable<any>{
+    console.log("sass")
+    const url = this.URL+"perfil"
+    return this.http.post<any>(url, form.value)
   }
 }
