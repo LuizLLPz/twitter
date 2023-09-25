@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'https://localhost:3000'; // Defina sua URL base aqui
+  private baseUrl = 'http://localhost:3000'; // Defina sua URL base aqui
 
   getBaseUrl(): string {
     return this.baseUrl;
