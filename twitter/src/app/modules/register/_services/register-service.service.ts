@@ -14,7 +14,7 @@ export class RegisterServiceService {
 
   postRegister(form: any): Observable<any>{
     console.log("sass")
-    const url = this.URL+"perfil"
+    const url = this.URL+"profile"
     return this.http.post<any>(url, form.value)
   }
 }

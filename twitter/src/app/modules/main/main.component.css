@@ -25,7 +25,7 @@ html, body {
 
 
 .background{
-    background-size: contain;
+    background-size: cover;
     background-image: url("../../../assets/background_images/background_bird_01.svg");
     width: 59%;
     background-repeat: no-repeat;
