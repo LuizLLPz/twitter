@@ -25,10 +25,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (res) => {
           // coloar isso na tela por meio desse service e esse metodo. Aguadar a informação no local storage e realizar o mesmo metodo para pegar as informações do usuario
-          console.log(res.data.username);
-          console.log(res.data.name);
-          console.log(res.data.number);
-          console.log(res.data.email);
+          if (res.data !== false) {
+            localStorage.setItem('username', res.data.username);
+            localStorage.setItem('name', res.data.name);
+            localStorage.setItem('number', res.data.number);
+            localStorage.setItem('email', res.data.email);
+            window.location.href = 'http://localhost:4200/userProfile';
+          }
         },
         (err) => {
           console.log(err);
