@@ -29,6 +29,15 @@ export class PerfilService {
   constructor(private prisma: PrismaService) {}
 
   async getUsuarioLogin(email: string, password: string): Promise<Idata> {
+    if (email === undefined || password === undefined) {
+      return { data: false, mensage: 'Usuario não encontrado!' };
+    }
+    if (email === '' || password === '') {
+      return { data: false, mensage: 'Usuario não encontrado!' };
+    }
+    if (email === null || password === null) {
+      return { data: false, mensage: 'Usuario não encontrado!' };
+    }
     try {
       const info = await this.prisma.user.findMany({
         select: {

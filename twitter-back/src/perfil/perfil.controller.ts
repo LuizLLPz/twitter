@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import {
   IUsuarioCadastro,
   IUsuarioLogin,
@@ -11,8 +11,12 @@ export class PerfilController {
   constructor(private readonly postService: PerfilService) {}
 
   @Get('login')
-  async getUsuario(@Body() userInfo: IUsuarioLogin): Promise<Idata> {
-    const { email, password } = userInfo;
+  async getUsuario(
+    // @Param('email') email: string,
+    // @Param('password') password: string,
+    @Query() params: any,
+  ): Promise<Idata> {
+    const { email, password } = params;
     return this.postService.getUsuarioLogin(email, password);
   }
 
