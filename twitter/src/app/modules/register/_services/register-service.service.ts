@@ -6,15 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterServiceService {
-  URL = "http://localhost:3000/";
-
   constructor(
     private http: HttpClient,
   ) { }
 
   postRegister(form: any): Observable<any>{
     console.log("sass")
-    const url = this.URL+"perfil"
+    const url = "profile"
     return this.http.post<any>(url, form.value)
   }
 }
