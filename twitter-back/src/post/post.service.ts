@@ -9,8 +9,16 @@ export class PostService {
     constructor(private prisma: PrismaService) {
     }
 
-    getPosts(): Promise<Post[]> {
-        return this.prisma.post.findMany();
+    getPosts() {
+        return this.prisma.post.findMany({
+            select: {
+                title: true,
+                author: true
+            },
+            orderBy: {
+                id: 'desc'
+            }
+        });
     }
 
     getUserPosts(authorId: string): Promise<Post[]> {

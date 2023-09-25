@@ -1,0 +1,55 @@
+.feed_card {
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+}
+
+
+.card_info {
+  display: flex;
+  flex-direction: row;
+}
+
+.post_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.post_author_info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+.card_author_image {
+  border-radius: 50%;
+  display: flex;
+  width: 80px;
+  height: 80px;
+}
+
+card_author_image > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+
+.author_info_name {
+  font-weight: bold;
+  font-size: 20px
+}
+
+.author_info_user {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.post_text {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 120%;
+  color: rgba(0, 0, 0, 0.75);
+}
+

@@ -9,7 +9,7 @@ export class PostController {
     constructor(private readonly postService: PostService) {}
 
     @Get()
-    getPosts(): Promise<PostModel[]> {
+    getPosts() {
         return this.postService.getPosts();
     }
 
