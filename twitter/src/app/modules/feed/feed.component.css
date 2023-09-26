@@ -15,9 +15,10 @@
 
 .feed_content {
   height: 100%;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
-  flex: 3;
+  width: 64%;
 }
 
 
