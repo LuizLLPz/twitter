@@ -18,7 +18,7 @@ export class LoginService {
     params = params.append('email', email);
     params = params.append('password', password);
 
-    return this.http.get('http://localhost:3000/login/', {
+    return this.http.get('login', {
       headers: headers,
       params: params,
     });
